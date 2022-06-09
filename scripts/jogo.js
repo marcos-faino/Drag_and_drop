@@ -16,6 +16,10 @@ window.onload = function(){
     });
 }
 
+document.ontouchstart = function(e){
+    preventDefault()
+}
+
 function iniciardrag(ev){
     ev.dataTransfer.setData("img", ev.target.id);
 }
