@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Exemplo drag and drop</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="estilos/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container container-meu">
+        <div class="logo">
+        </div>
+        <div class="header"></div>
+        <div class="content row">
+            <h1>Organize os objetos por ordem alfabética</h1>
+            <div class="jogo col-6">
+                <div id="orig1">
+                    <img src="" alt="imagem1" draggable="true" id="drag1" class="mydrag" height="50">
+                </div>
+                <div id="orig2">
+                    <img src="" alt="imagem2" draggable="true" id="drag2" class="mydrag" height="50">
+                </div>
+                <div id="orig3">
+                    <img src="" alt="imagem2" draggable="true" id="drag3" class="mydrag" height="50">
+                </div>
+            </div>
+            <div class="jogo col-6">
+                <div id="receb1" class="dragfim">1ª img aqui</div>
+                <div id="receb2" class="dragfim">2ª img aqui</div>
+                <div id="receb3" class="dragfim">3ª img aqui</div>
+            </div>
+        </div>
+        <div class="side">
+            <div>
+                <a href="https://www.clipescola.com/recursos-educacionais-abertos/">
+                    <img src="imagens/clipescola.svg" alt="clip escola">
+                </a>
+            </div>
+            <div>
+                <a href="http://www.abed.org.br/site/pt/midiateca/referatorio/">
+                    <img src="imagens/logoabed.png" alt="clip escola">
+                </a>
+            </div>
+            <div>
+                <a href="https://repositorioaberto.uab.pt/handle/10400.2/4664">
+                    <img src="imagens/logouab.png" alt="logo uab">
+                </a>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div id="mensagem"></div>
+            <div class="text-center"><button class="btn btn-primary" id="btReiniciar">Reiniciar</button></div>
+        </div>
+    </div>
+    <script src="scripts/jogo.js"></script>
+</body>
+
+</html>
