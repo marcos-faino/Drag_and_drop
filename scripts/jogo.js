@@ -1,6 +1,8 @@
 window.onload = function(){
     let disp = [1,2,3];
     let vetor = [1,2,3];
+    let eltransf; //variável global para receber o objeto no toque do celular
+
     vetor.forEach(function(e){
         num = disp[Math.floor(Math.random()*disp.length)];
         disp.splice(disp.indexOf(num), 1);
@@ -15,11 +17,11 @@ window.onload = function(){
         divorig.ondragover = permitirSoltar;
         let imgdrags = document.getElementsByClassName('mydrag');
         Object.values(imgdrags)[e-1].ontouchstart = function(event){
-            event.preventDefault();
-            iniciardrag();
+            eltransf = this;
         }
-        divreceb.ontouchstart = receberImagem;
-        divreceb.ontouchmovie = permitirSoltar;
+        divreceb.ontouchstart = function(){
+            divreceb = eltransf;
+        }
     });
 }
 
@@ -33,9 +35,7 @@ Object.values(imgdrags).forEach(function(i){
 */
 
 function iniciardrag(ev){
-    alert("executou");
     ev.dataTransfer.setData("img", ev.target.id);
-    alert(ev.dataTransfer.getData("img"));
 }
 
 let quant = 0;

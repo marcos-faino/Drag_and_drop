@@ -73,6 +73,7 @@
     }
     .logo {
         grid-area: 1 / 1 / 2 / 4;
+        background-size: auto;
     }
 
     .header {
