@@ -14,8 +14,8 @@ window.onload = function(){
         divorig.ondrop = receberImagem;
         divorig.ondragover = permitirSoltar;
         let imgdrags = document.getElementsByClassName('mydrag');
-        Object.values(imgdrags)[e-1].ontouchstart = function(event){
-            event.preventDefault();
+        Object.values(imgdrags)[e-1].ontouchend = function(event){
+            //event.preventDefault();
             iniciardrag();
         }
         divreceb.ontouchend = receberImagem;
