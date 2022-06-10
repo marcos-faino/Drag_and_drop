@@ -26,7 +26,11 @@ let acertos = 0;
 function receberImagem(ev){
     ev.preventDefault();
     var dados = ev.dataTransfer.getData("img");
-    let imagem = document.getElementById(dados);
+    verificaracertos(ev, dados);
+}
+
+function verificaracertos(ev, idelem){
+    let imagem = document.getElementById(idelem);
     if(!ev.target.innerHTML.includes('aqui')){
         return;
     }
@@ -77,5 +81,6 @@ Object.values(imgdragfim).forEach(function(e){
         let origem = document.getElementById(eltransf);
         this.innerHTML = origem.parentElement.innerHTML;
         origem.parentElement.innerHTML = "";
+        verificaracertos(event, eltransf)
     }
 });
