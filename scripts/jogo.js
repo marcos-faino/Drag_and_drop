@@ -26,18 +26,18 @@ let acertos = 0;
 function receberImagem(ev){
     ev.preventDefault();
     var dados = ev.dataTransfer.getData("img");
-    verificaracertos(ev, dados);
+    verificaracertos(dados, ev.target);
 }
 
-function verificaracertos(ev, idelem){
+function verificaracertos(idelem, destino){
     let imagem = document.getElementById(idelem);
-    if(!ev.target.innerHTML.includes('aqui')){
+    if(!destino.innerHTML.includes('aqui')){
         return;
     }
-    ev.target.innerHTML = "";
+    destino.innerHTML = "";
     imagem.draggable = false;
-    ev.target.appendChild(imagem);
-    if(ev.target.id.substr(ev.target.id.length-1, 1) == imagem.src.substr(imagem.src.length-5,1)){
+    destino.appendChild(imagem);
+    if(destino.id.substr(destino.id.length-1, 1) == imagem.src.substr(imagem.src.length-5,1)){
         acertos++;
     }
     quant++
@@ -81,6 +81,6 @@ Object.values(imgdragfim).forEach(function(e){
         let origem = document.getElementById(eltransf);
         this.innerHTML = origem.parentElement.innerHTML;
         origem.parentElement.innerHTML = "";
-        verificaracertos(event, eltransf)
+        verificaracertos(eltransf, this);
     }
 });
