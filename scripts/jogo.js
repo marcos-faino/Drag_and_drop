@@ -19,13 +19,14 @@ window.onload = function(){
 let imgdrags = document.getElementsByClassName('mydrag');
 
 Object.values(imgdrags).forEach(function(i){
-    console.log("Olá");
     i.ontouchstart = function(e){
         e.preventDefault();
     }
+    i.on
 });
 
 document.ontouchstart = function(e){
+    alert('será??');
     preventDefault()
 }
 
