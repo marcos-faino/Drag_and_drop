@@ -18,9 +18,10 @@ window.onload = function(){
         let imgdrags = document.getElementsByClassName('mydrag');
         Object.values(imgdrags)[e-1].ontouchstart = function(event){
             eltransf = this;
+            this.parentElement.innerHTML = "";
         }
         divreceb.ontouchstart = function(){
-            divreceb = eltransf;
+            divreceb.innerHTML = eltransf;
         }
     });
 }
