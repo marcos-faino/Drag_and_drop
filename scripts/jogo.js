@@ -33,6 +33,7 @@ Object.values(imgdrags).forEach(function(i){
 */
 
 function iniciardrag(ev){
+    alert("executou");
     ev.dataTransfer.setData("img", ev.target.id);
     alert(ev.dataTransfer.getData("img"));
 }
