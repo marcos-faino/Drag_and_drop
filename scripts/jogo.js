@@ -14,11 +14,11 @@ window.onload = function(){
         divorig.ondrop = receberImagem;
         divorig.ondragover = permitirSoltar;
         let imgdrags = document.getElementsByClassName('mydrag');
-        Object.values(imgdrags)[e-1].ontouchend = function(event){
+        Object.values(imgdrags)[e-1].ontouchstart = function(event){
             //event.preventDefault();
             iniciardrag();
         }
-        divreceb.ontouchend = receberImagem;
+        divreceb.ontouchstart = receberImagem;
         divreceb.ontouchmovie = permitirSoltar;
     });
 }
@@ -42,11 +42,12 @@ function receberImagem(ev){
     ev.preventDefault();
     var dados = ev.dataTransfer.getData("img");
     let imagem = document.getElementById(dados);
+    if(!ev.target.innerHTML.includes('aqui')){
+        return;
+    }
     ev.target.innerHTML = "";
     imagem.draggable = false;
     ev.target.appendChild(imagem);
-    //console.log(ev.target.id.substr(ev.target.id.length-1, 1));
-    //console.log(imagem.src.substr(imagem.src.length-5,1));
     if(ev.target.id.substr(ev.target.id.length-1, 1) == imagem.src.substr(imagem.src.length-5,1)){
         acertos++;
     }
