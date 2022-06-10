@@ -22,14 +22,10 @@ window.onload = function(){
         }
         let imgdragfim = document.getElementsByClassName('dragfim');
         Object.values(imgdragfim)[e-1].ontouchstart = function(event){
-            receberCelular(this);
+            alert("Será???");
+            this.innerHTML = eltransf;
         }
     });
-}
-
-//receber elementos pelo toque
-function receberCelular(el){
-    el.innerHTML = eltransf;
 }
 
 
