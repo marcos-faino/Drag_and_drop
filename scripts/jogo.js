@@ -13,22 +13,24 @@ window.onload = function(){
         divorig = document.getElementById('orig'+ e );
         divorig.ondrop = receberImagem;
         divorig.ondragover = permitirSoltar;
+        let imgdrags = document.getElementsByClassName('mydrag');
+        Object.values(imgdrags)[e-1].ontouchstart = function(event){
+            event.preventDefault();
+            iniciardrag();
+        }
+        divreceb.ontouchend = receberImagem;
+        divreceb.ontouchmovie = permitirSoltar;
     });
 }
 
-let imgdrags = document.getElementsByClassName('mydrag');
 
+/*
 Object.values(imgdrags).forEach(function(i){
     i.ontouchstart = function(e){
         e.preventDefault();
     }
-    i.on
 });
-
-document.ontouchstart = function(e){
-    alert('será??');
-    preventDefault()
-}
+*/
 
 function iniciardrag(ev){
     ev.dataTransfer.setData("img", ev.target.id);
@@ -72,3 +74,10 @@ function verificarfim(){
 btReiniciar.onclick = function(){
     window.location.reload();
 }
+/*
+document.ontouchstart = function(e){
+    alert('será??');
+    preventDefault();
+    iniciardrag(e);
+}
+*/
