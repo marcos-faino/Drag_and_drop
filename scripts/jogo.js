@@ -15,18 +15,21 @@ window.onload = function(){
         divorig = document.getElementById('orig'+ e );
         divorig.ondrop = receberImagem;
         divorig.ondragover = permitirSoltar;
-        let imgdrags = document.getElementsByClassName('mydrag');
-        Object.values(imgdrags)[e-1].ontouchstart = function(event){
+        let imgdragstart = document.getElementsByClassName('mydrag');
+        Object.values(imgdragstart)[e-1].ontouchstart = function(event){
             eltransf = this;
             this.parentElement.innerHTML = "";
         }
-        divreceb.ontouchstart = receberCelular;
+        let imgdragfim = document.getElementsByClassName('dragfim');
+        Object.values(imgdragfim)[e-1].ontouchstart = function(event){
+            receberCelular(this);
+        }
     });
 }
 
 //receber elementos pelo toque
-function receberCelular(){
-    this.innerHTML = eltransf;
+function receberCelular(el){
+    el.innerHTML = eltransf;
 }
 
 
