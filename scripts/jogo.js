@@ -65,12 +65,17 @@ btReiniciar.onclick = function(){
 let eltransf; //variável global para receber o objeto no toque do celular
 
 let imgdragstart = document.getElementsByClassName('mydrag');
-Object.values(imgdragstart)[e-1].ontouchstart = function(event){
-    eltransf = this.id;
-}
+Object.values(imgdragstart).forEach(function(e){
+    e.ontouchstart = function(event){
+        eltransf = this.id;
+    }
+});
+
 let imgdragfim = document.getElementsByClassName('dragfim');
-Object.values(imgdragfim)[e-1].ontouchstart = function(event){
-    let origem = document.getElementById(eltransf);
-    this.innerHTML = origem.parentElement.innerHTML;
-    origem.parentElement.innerHTML = "";
-}
+Object.values(imgdragfim).forEach(function(e){
+    e.ontouchstart = function(event){
+        let origem = document.getElementById(eltransf);
+        this.innerHTML = origem.parentElement.innerHTML;
+        origem.parentElement.innerHTML = "";
+    }
+});
