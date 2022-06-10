@@ -20,10 +20,13 @@ window.onload = function(){
             eltransf = this;
             this.parentElement.innerHTML = "";
         }
-        divreceb.ontouchstart = function(){
-            divreceb.innerHTML = eltransf;
-        }
+        divreceb.ontouchstart = receberCelular;
     });
+}
+
+//receber elementos pelo toque
+function receberCelular(){
+    this.innerHTML = eltransf;
 }
 
 
