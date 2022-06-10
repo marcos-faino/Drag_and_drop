@@ -16,6 +16,15 @@ window.onload = function(){
     });
 }
 
+let imgdrags = document.getElementsByClassName('mydrag');
+
+Object.values(imgdrags).forEach(function(i){
+    console.log("Olá");
+    i.ontouchstart = function(e){
+        e.preventDefault();
+    }
+});
+
 document.ontouchstart = function(e){
     preventDefault()
 }
