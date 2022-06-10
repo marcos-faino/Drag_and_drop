@@ -1,7 +1,6 @@
 window.onload = function(){
     let disp = [1,2,3];
     let vetor = [1,2,3];
-    let eltransf; //variável global para receber o objeto no toque do celular
 
     vetor.forEach(function(e){
         num = disp[Math.floor(Math.random()*disp.length)];
@@ -15,27 +14,8 @@ window.onload = function(){
         divorig = document.getElementById('orig'+ e );
         divorig.ondrop = receberImagem;
         divorig.ondragover = permitirSoltar;
-        let imgdragstart = document.getElementsByClassName('mydrag');
-        Object.values(imgdragstart)[e-1].ontouchstart = function(event){
-            eltransf = this;
-            this.parentElement.innerHTML = "";
-        }
-        let imgdragfim = document.getElementsByClassName('dragfim');
-        Object.values(imgdragfim)[e-1].ontouchstart = function(event){
-            alert("Será???");
-            this.innerHTML = eltransf;
-        }
     });
 }
-
-
-/*
-Object.values(imgdrags).forEach(function(i){
-    i.ontouchstart = function(e){
-        e.preventDefault();
-    }
-});
-*/
 
 function iniciardrag(ev){
     ev.dataTransfer.setData("img", ev.target.id);
@@ -80,10 +60,17 @@ function verificarfim(){
 btReiniciar.onclick = function(){
     window.location.reload();
 }
-/*
-document.ontouchstart = function(e){
-    alert('será??');
-    preventDefault();
-    iniciardrag(e);
+
+// Para celular
+let eltransf; //variável global para receber o objeto no toque do celular
+
+let imgdragstart = document.getElementsByClassName('mydrag');
+Object.values(imgdragstart)[e-1].ontouchstart = function(event){
+    eltransf = this.id;
 }
-*/
+let imgdragfim = document.getElementsByClassName('dragfim');
+Object.values(imgdragfim)[e-1].ontouchstart = function(event){
+    let origem = document.getElementById(eltransf);
+    this.innerHTML = origem.parentElement.innerHTML;
+    origem.parentElement.innerHTML = "";
+}
