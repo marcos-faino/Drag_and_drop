@@ -40,7 +40,8 @@ function verificaracertos(idelem, destino){
     if(destino.id.substr(destino.id.length-1, 1) == imagem.src.substr(imagem.src.length-5,1)){
         acertos++;
     }
-    quant++
+    quant++;
+    alert(quant);
     if(quant ===3 ){
         verificarfim();
         quant=0;
