@@ -41,7 +41,7 @@ function verificaracertos(idelem, destino){
         acertos++;
     }
     quant++;
-    alert(quant);
+    console.log(quant);
     if(quant ===3 ){
         verificarfim();
         quant=0;
