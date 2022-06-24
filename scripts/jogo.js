@@ -23,6 +23,9 @@ function iniciardrag(ev){
 
 let quant = 0;
 let acertos = 0;
+// Para celular
+let eltransf; //variável global para receber o objeto no toque do celular
+
 function receberImagem(ev){
     ev.preventDefault();
     var dados = ev.dataTransfer.getData("img");
@@ -31,7 +34,8 @@ function receberImagem(ev){
 
 function verificaracertos(idelem, destino){
     let imagem = document.getElementById(idelem);
-    if(!destino.innerHTML.includes('aqui')){
+    //document.getElementById('testes').innerHTML = destino.innerHTML.indexOf('aqui');
+    if(destino.innerHTML.indexOf('aqui') == -1){
         return;
     }
     destino.innerHTML = "";
@@ -41,7 +45,6 @@ function verificaracertos(idelem, destino){
         acertos++;
     }
     quant++;
-    testes.innerHTML = quant;
     if(quant ===3 ){
         verificarfim();
         quant=0;
@@ -53,7 +56,7 @@ function permitirSoltar(ev){
 }
 
 function verificarfim(){
-    console.log(acertos);
+    document.getElementById('testes').innerHTML = acertos;
     if(acertos === 3){
         mensagem.innerHTML = '<h2 class="bg-warning text-success text-center">Parabéns vc acertou!!!!</h2>';
     }else{
@@ -66,8 +69,6 @@ btReiniciar.onclick = function(){
     window.location.reload();
 }
 
-// Para celular
-let eltransf; //variável global para receber o objeto no toque do celular
 
 let imgdragstart = document.getElementsByClassName('mydrag');
 Object.values(imgdragstart).forEach(function(e){
@@ -79,9 +80,9 @@ Object.values(imgdragstart).forEach(function(e){
 let imgdragfim = document.getElementsByClassName('dragfim');
 Object.values(imgdragfim).forEach(function(e){
     e.ontouchstart = function(event){
-        let origem = document.getElementById(eltransf);
-        this.innerHTML = origem.parentElement.innerHTML;
-        origem.parentElement.innerHTML = "";
-        verificaracertos(eltransf, this);
+        if(eltransf != ""){
+            verificaracertos(eltransf, e);
+        }
+        eltransf="";
     }
 });
