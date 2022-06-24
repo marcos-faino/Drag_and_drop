@@ -34,7 +34,6 @@ function receberImagem(ev){
 
 function verificaracertos(idelem, destino){
     let imagem = document.getElementById(idelem);
-    //document.getElementById('testes').innerHTML = destino.innerHTML.indexOf('aqui');
     if(destino.innerHTML.indexOf('aqui') == -1){
         return;
     }
@@ -56,7 +55,6 @@ function permitirSoltar(ev){
 }
 
 function verificarfim(){
-    document.getElementById('testes').innerHTML = acertos;
     if(acertos === 3){
         mensagem.innerHTML = '<h2 class="bg-warning text-success text-center">Parabéns vc acertou!!!!</h2>';
     }else{
