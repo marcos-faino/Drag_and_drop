@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<p>Drag the W3Schools image into the rectangle:</p>
+<p id='testes'>Drag the W3Schools image into the rectangle:</p>
 
 <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 <br>
@@ -33,7 +33,10 @@
 		var data=ev.dataTransfer.getData("Text");
 		ev.target.appendChild(document.getElementById(data));
 	}
-		drag1.addEventListener("touchstart", drag, false);
+		// drag1.addEventListener("touchstart", drag, false);
+		drag1.addEventListener("touchstart", function(){
+			testes.innerHTML = "testando testando...";
+		}, false);
 		drag1.addEventListener("touchend", drop, false);
 		// el.addEventListener("touchcancel", handleCancel, false);
 		// el.addEventListener("touchleave", handleEnd, false);
