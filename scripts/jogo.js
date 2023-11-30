@@ -14,6 +14,11 @@ window.onload = function(){
         divorig = document.getElementById('orig'+ e );
         divorig.ondrop = receberImagem;
         divorig.ondragover = permitirSoltar;
+        let mc = new Hammer(img);
+        mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
+        mc.on("panleft panright panup pandown", function(ev) {
+            dragdrop(ev, img);
+        });
     });
 }
 
@@ -67,20 +72,13 @@ btReiniciar.onclick = function(){
     window.location.reload();
 }
 
+idimg = ""
 
-let imgdragstart = document.getElementsByClassName('mydrag');
-Object.values(imgdragstart).forEach(function(e){
-    e.ontouchstart = function(event){
-        eltransf = this.id;
-    }
-});
-
-let imgdragfim = document.getElementsByClassName('dragfim');
-Object.values(imgdragfim).forEach(function(e){
-    e.ontouchstart = function(event){
-        if(eltransf != ""){
-            verificaracertos(eltransf, e);
-        }
-        eltransf="";
-    }
-});
+function dragdrop(ev, img){
+    console.log(img);
+    ev.preventDefault();
+    idimg = ev.target.id;
+    img.style.position = "fixed";
+    img.style.top = (Math.floor(ev.changedPointers[0].clientY - (img.clientHeight/2))) + "px";
+    img.style.left = (Math.floor(ev.changedPointers[0].clientX - (img.clientWidth/2))) + "px";
+}
