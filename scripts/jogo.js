@@ -19,7 +19,14 @@ window.onload = function(){
         mc.on("panleft panright panup pandown", function(ev) {
             dragdrop(ev, img);
         });
+        mc.on("panend", function(ev) {
+            teste(ev);
+        });
     });
+}
+
+function teste(ev){
+    console.log("Soltei aqui...", ev.changedPointers[0].clientX + "  " + ev.changedPointers[0].clientY)
 }
 
 function iniciardrag(ev){
@@ -74,8 +81,10 @@ btReiniciar.onclick = function(){
 
 idimg = ""
 
+// pegar informações da posição de um elemento na tela.
+// console.log(receb1.getBoundingClientRect()['x']);
+
 function dragdrop(ev, img){
-    console.log(img);
     ev.preventDefault();
     idimg = ev.target.id;
     img.style.position = "fixed";
