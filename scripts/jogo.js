@@ -1,12 +1,14 @@
 window.onload = function(){
     let disp = [1,2,3];
     let vetor = [1,2,3];
+    let locais = [];
 
     vetor.forEach(function(e){
         num = disp[Math.floor(Math.random()*disp.length)];
         disp.splice(disp.indexOf(num), 1);
         let img = document.getElementById('drag'+e);
         img.src = 'imagens/'+num+'.png';
+        locais[num] = img;
         img.ondragstart = iniciardrag;
         divreceb = document.getElementById('receb'+ e );
         divreceb.ondrop = receberImagem;
@@ -20,13 +22,9 @@ window.onload = function(){
             dragdrop(ev, img);
         });
         mc.on("panend", function(ev) {
-            teste(ev);
+            acertou(ev, locais);
         });
     });
-}
-
-function teste(ev){
-    console.log("Soltei aqui...", ev.changedPointers[0].clientX + "  " + ev.changedPointers[0].clientY)
 }
 
 function iniciardrag(ev){
@@ -37,6 +35,24 @@ let quant = 0;
 let acertos = 0;
 // Para celular
 let eltransf; //variável global para receber o objeto no toque do celular
+
+
+function acertou(ev, locais){
+    console.log(ev, locais);
+    let src = ev.target.src.substr(ev.target.src.length-5,1);
+    if(src == 1){
+        if((ev.changedPointers[0].clientX > receb1.getBoundingClientRect()['x']) && (ev.changedPointers[0].clientX < receb1.getBoundingClientRect()['x'] + receb1.getBoundingClientRect()['width'])){
+            if((ev.changedPointers[0].clientY > receb1.getBoundingClientRect()['y']) && (ev.changedPointers[0].clientY < receb1.getBoundingClientRect()['y'] + receb1.getBoundingClientRect()['height'])){
+                document.getElementById('receb1').innerHTML = ev.changedPointers[0].srcElement;
+            }
+        }
+    }
+    //if((ev.changedPointers[0].clientX > receb1.getBoundingClientRect()['x']))
+}
+
+
+
+
 
 function receberImagem(ev){
     ev.preventDefault();
@@ -86,7 +102,6 @@ idimg = ""
 
 function dragdrop(ev, img){
     ev.preventDefault();
-    idimg = ev.target.id;
     img.style.position = "fixed";
     img.style.top = (Math.floor(ev.changedPointers[0].clientY - (img.clientHeight/2))) + "px";
     img.style.left = (Math.floor(ev.changedPointers[0].clientX - (img.clientWidth/2))) + "px";
